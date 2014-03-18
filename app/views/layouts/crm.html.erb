@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rocodev Event 報名系統</title>
+
+  <!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+  <script data-turbolinks-track="true" src="/assets/jquery_ujs.js?body=1"></script>
+
+    <!-- Bootstrap core CSS -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+        <script src="/assets/shtml5shiv.js"></script>
+        <script src="/assets/respond.min.js"></script>
+      <![endif]-->
+
+      <!-- Custom styles for this template -->
+  <link href="/assets/carousel2.css" rel="stylesheet">
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+   <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">神韻推廣客戶關係管理系統</a>
+        </div>    
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li>    
+              <%= form_tag "/search", :class => "navbar-form navbar-left", :method => :get do %>
+                <div class="form-group">
+                  <input type="text" name="q" class="form-control" value="<%= @query_string %>" placeholder="<%= @query_string || "客戶資料" %>" />
+                </div>
+                <button type="submit" class="btn btn-default">搜尋</button>
+              <% end %>            
+            </li>
+            <% if !current_user %>
+            <li><%= link_to( "登入", new_user_session_path ) %></li>                 
+            <% else %>
+            <li><a><%= current_user.name %></a></li>
+            <li><%= link_to('修改密碼', edit_registration_path(:user)) %></li> 
+            <li><%= link_to "登出", destroy_user_session_path, :method => :delete %></li> 
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="main_container">
+      <%= render :partial => "common/navigation" %>
+      <% if flash[:warning] %>
+        <div class="alert fade in alert-success"><a class="close" data-dismiss="alert" href="#">x</a><%= flash[:warning] %></div>
+      <% end %>
+      <%= yield %>      
+    </div> <!-- /container -->
+</body>
+</html>

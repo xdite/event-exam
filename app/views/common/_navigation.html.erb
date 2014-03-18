@@ -1,0 +1,21 @@
+<%
+menus =
+{
+  "客戶" => "/people?t=list",
+  "客戶總覽" => "/people?t=view",
+  "新增客戶" => "/people/new",
+  "文件" => "/documents"
+
+}
+%>
+<div>
+  <ul class="nav nav-pills">
+  <% menus.each do |k,v| %>
+    <% if request.original_url.to_s.include? v %>
+    <li class="active"><a href><%= k %></a></li>
+    <% else %>
+    <li><a href="<%= v %>"><%= k %></a></li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>

@@ -1,0 +1,52 @@
+<div class="setting_panel"> 
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">新增文件</h3>
+    </div>
+    <div class="panel-body">
+    <%= form_for @document do |f| %>
+    <div class="input-group">
+       <%= f.label :file, "選擇文件", :class => "input-group-addon" %>
+       <%= f.file_field :file %>
+    </div>
+       <div class="input-group">
+        <%= f.label :description, "文件說明", :class => "input-group-addon" %>
+       <%= f.text_field :description, :class => "form-control", :placeholder => "Image Description" %>
+      </div>
+      <div class="input-group">
+        <%= f.submit("新增", :class => "btn btn-default") %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">文件</h3>
+    </div>
+    <div class="panel-body">
+      <span class="label label-info">總文件 <%= @documents.count %>人</span>
+      <div class="panel panel-default">
+        <table class="table list_table">
+          <thead>
+            <th>文件說明</th>
+            <th>文件網址</th>
+            <th>查看</th>
+          </thead>
+          <% @documents.each do |document| %>
+          <tr>
+     		<td><%= document.description %></td>
+     		<td><%= document.file.url %></td>
+            <td class="list_operation">
+              <div class="list_item">
+                <%= link_to(image_tag("/assets/1388778916_old-edit-find.png", :width => 25), document.file.url, :target => '_blank') %>
+                <%= link_to(image_tag("/assets/1388778956_Gnome-Edit-Delete-64.png", :width => 25), document_path(document), method: :delete, confirm: "確定要刪除嗎？") %>
+              </div>  
+              <div class="list_item"><%= document.user.name %> <%= document.created_at.to_s %> 建立</div>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+      </div>     
+    </div>
+  </div>
+</div>  

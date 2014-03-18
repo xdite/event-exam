@@ -1,0 +1,180 @@
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.4.1/bootstrap-select.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.4.1/bootstrap-select.min.js"></script>
+<script type="text/javascript">
+    $(window).on('load', function () {
+
+        $('.selectpicker').selectpicker({
+            'selectedText': 'cat'
+        });
+
+        // $('.selectpicker').selectpicker('hide');
+    });
+</script>
+<div class="setting_panel">
+  <%= form_for @person do |f| %>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">客戶基本資料</h3>
+    </div>
+    <div class="panel-body">
+        <div class="input-group">          
+          <%= f.label :avatar, "照片", :class => "input-group-addon" %>
+          <div class="fileupload-preview thumbnail">
+            <%= image_tag @person.avatar.url, width: "200" if @person.avatar.url != "/avatars/original/missing.png" %>
+            <%= image_tag "/assets/1388596855_people-b.png" if @person.avatar.url == "/avatars/original/missing.png"%>
+          </div>
+          <%= f.file_field :avatar %>
+        </div>
+        <div class="input-group">
+          <%= f.label :name, "姓名",:class => "input-group-addon" %>
+          <%= f.text_field :name, :class => "form-control", :placeholder => "客戶姓名" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :honorific, "尊稱",:class => "input-group-addon" %>
+          <%= f.text_field :honorific, :class => "form-control", :placeholder => "尊稱就是客戶喜歡或常用的稱呼，EX:劉先生、嚴老師、陳里長、蕭董事長等" %>
+        </div>
+        <div class="input-group input-group-left">
+            <%= f.label :sex, "性別",:class => "input-group-addon" %>
+            <div class="selectpicker_div">
+              <select class="selectpicker" id="person_sex" name="person[sex]">
+                <option value="1" <%= 'selected' if @person.sex == 1 %>>男</option>
+                <option value="0" <%= 'selected' if @person.sex == 0 %>>女</option>
+              </select>
+            </div>
+        </div>
+        <div class="input-group">
+          <%= f.label :mobeil, "行動電話",:class => "input-group-addon" %>
+          <%= f.text_field :mobeil, :class => "form-control", :placeholder => "行動電話" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :zip_code, "郵遞區號",:class => "input-group-addon" %>
+          <%= f.text_field :zip_code, :class => "form-control", :placeholder => "郵遞區號" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :address, "地址",:class => "input-group-addon" %>
+          <%= f.text_field :address, :class => "form-control", :placeholder => "地址" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :telephone, "電話",:class => "input-group-addon" %>
+          <%= f.text_field :telephone, :class => "form-control", :placeholder => "電話" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :fax, "傳真",:class => "input-group-addon" %>
+          <%= f.text_field :fax, :class => "form-control", :placeholder => "傳真" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :email, "電子郵件",:class => "input-group-addon" %>
+          <%= f.text_field :email, :class => "form-control", :placeholder => "電子郵件" %>
+        </div>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">客戶公司資料</h3>
+    </div>
+    <div class="panel-body">
+      <div class="input-group">
+          <%= f.label :company_name, "公司名稱",:class => "input-group-addon" %>
+          <%= f.text_field :company_name, :class => "form-control", :placeholder => "公司名稱" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :company_department, "公司部門",:class => "input-group-addon" %>
+          <%= f.text_field :company_department, :class => "form-control", :placeholder => "公司部門" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :company_title, "公司職稱",:class => "input-group-addon" %>
+          <%= f.text_field :company_title, :class => "form-control", :placeholder => "公司職稱" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :company_unified_numbering, "公司統編",:class => "input-group-addon" %>
+          <%= f.text_field :company_unified_numbering, :class => "form-control", :placeholder => "公司統編" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :company_zip_code, "公司郵遞區號",:class => "input-group-addon" %>
+          <%= f.text_field :company_zip_code, :class => "form-control", :placeholder => "公司郵遞區號" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :company_address, "公司地址",:class => "input-group-addon" %>
+          <%= f.text_field :company_address, :class => "form-control", :placeholder => "公司地址" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :company_telephone_1, "公司電話1",:class => "input-group-addon" %>
+          <%= f.text_field :company_telephone_1, :class => "form-control", :placeholder => "公司電話1" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :company_telephone_2, "公司電話2",:class => "input-group-addon" %>
+          <%= f.text_field :company_telephone_2, :class => "form-control", :placeholder => "公司電話2" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :company_fax, "公司傳真",:class => "input-group-addon" %>
+          <%= f.text_field :company_fax, :class => "form-control", :placeholder => "公司傳真" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :company_email, "公司Email",:class => "input-group-addon" %>
+          <%= f.text_field :company_email, :class => "form-control", :placeholder => "公司Email" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :company_website, "公司網站",:class => "input-group-addon" %>
+          <%= f.text_field :company_website, :class => "form-control", :placeholder => "公司網站" %>
+        </div>
+    </div>
+  </div>
+   <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">客戶互動記錄
+      </h3>
+    </div>
+    <div class="panel-body">
+        <div class="input-group">
+          <%= f.label :shenyun_watch, "觀看神韻",:class => "input-group-addon" %>
+          <%= f.text_area :shenyun_watch, :rows => 3, :class => "form-control", :placeholder => "這裡填寫客戶觀看神韻的相關記錄,例如:時間,場次,票價" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :interactive, "互動記錄",:class => "input-group-addon" %>
+          <%= f.text_area :interactive, :rows => 3, :class => "form-control", :placeholder => "這裡填寫我們和此客戶的相關互動記錄,例如: 電訪,拜訪,說明會,信件,等的時間內容和狀況" %>
+        </div>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">客戶相關資料
+      </h3>
+    </div>
+    <div class="panel-body">
+        <div class="input-group input-group-left">
+          <%= f.label :level, "客戶等級",:class => "input-group-addon" %>
+          <div class="selectpicker_div">
+            <select class="selectpicker" id="person_level" name="person[level]">
+              <option value="0" data-content="<span class='label label-default'>尚未認識</span>" <%= 'selected' if @person.level == 0 %>>尚未認識</option>
+              <option value="1" data-content="<span class='label label-primary'>一般客戶</span>" <%= 'selected' if @person.level == 1 %>>一般客戶</option>
+              <option value="2" data-content="<span class='label label-danger'>重要客戶</span>" <%='selected' if @person.level == 2 %>>重要客戶</option>
+              <option value="3" data-content="<span class='label label-warning'>VIP</span>" <%= 'selected' if @person.level == 3 %>>VIP</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-group input-group-left">
+          <%= f.label :dafa_attitude, "大法態度",:class => "input-group-addon" %>
+          <div class="selectpicker_div">
+            <select class="selectpicker" id="person_dafa_attitude" name="person[dafa_attitude]">
+              <option value="0" data-content="<span class='label label-info'>大法態度未明</span>" <%= 'selected' if @person.dafa_attitude == 0 %>>大法態度未明</option>
+              <option value="1" data-content="<span class='label label-warning'>對大法有好感</span>" <%= 'selected' if @person.dafa_attitude == 1 %>>對大法有好感</option>
+              <option value="2" data-content="<span class='label label-danger'>大法負面思想</span>" <%= 'selected' if @person.dafa_attitude == 2 %>>大法負面思想</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-group">
+          <%= f.label :source, "客戶來源",:class => "input-group-addon" %>
+          <%= f.text_field :source, :class => "form-control", :placeholder => "填寫此客戶是由何種方式認識到的" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :ps, "備註",:class => "input-group-addon" %>
+          <%= f.text_area :ps, :rows => 3, :class => "form-control", :placeholder => "備註" %>
+        </div>
+        <div class="input-group input-group-center">
+          <%= f.submit("新增", :class => "btn btn-default" ) %>
+        </div>
+    </div>
+  </div>
+  
+<% end %>
+</div>

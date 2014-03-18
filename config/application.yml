@@ -1,0 +1,11 @@
+defaults: &defaults
+  host: "eliving.dev"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

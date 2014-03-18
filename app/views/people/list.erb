@@ -1,0 +1,71 @@
+<div class="setting_panel"> 
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">客戶列表</h3>
+    </div>
+    <div class="panel-body">
+      <span class="label label-info">總客戶 <%= @person.count %>人</span>
+      <div class="panel panel-default">
+        <table class="table list_table">
+          <thead>
+            <th></th>
+            <th>個人資料</th>
+            <th>公司資料</th>
+            <th>互動記錄</th>
+            <th>相關資料</th>
+            <th></th>
+          </thead>
+          <% @person.each do |person| %>
+          <tr>
+            <td>
+              <%= image_tag person.avatar.url, width: "100" if person.avatar.url != "/avatars/original/missing.png" %>
+              <%= image_tag "/assets/1388596855_people-b.png", width: "100" if person.avatar.url == "/avatars/original/missing.png"%>
+            </td>
+            <td>
+              <div class="list_item"><%= person.name %> <%= @sex_label[person.sex].html_safe %></div>
+              <% if person.honorific and  person.honorific != "" %><div class="list_item">(<%= person.honorific %>)</div><% end %> 
+              <div class="list_item"><%= person.mobeil %></div>
+              <div class="list_item"><%= person.telephone %></div>
+              <div class="list_item"><%= person.fax %></div>
+              <div class="list_item"><%= person.email %></div>
+              <div class="list_item"><%= person.zip_code %></div>
+              <div class="list_item"><%= person.address %></div>
+            </td>
+            <td>  
+              <div class="list_item"><%= person.company_name %></div>
+              <div class="list_item"><%= person.company_department %></div>
+              <div class="list_item"><%= person.company_title %></div>
+              <div class="list_item"><%= person.company_unified_numbering %></div>
+              <div class="list_item"><%= person.company_zip_code %></div>
+              <div class="list_item"><%= person.company_address %></div>
+              <div class="list_item"><%= person.company_telephone_1 %></div>
+              <div class="list_item"><%= person.company_telephone_2 %></div>
+              <div class="list_item"><%= person.company_fax %></div>
+              <div class="list_item"><%= person.company_email %></div>
+              <div class="list_item"><%= auto_link(person.company_website, :html => { :target => '_blank' })  %></div>
+            </td>
+            <td>
+              <div class="list_item"><%= person.shenyun_watch %></div>
+              <div class="list_item"><%= person.interactive %></div>
+            </td>
+            <td class="list_information">                 
+              <div class="list_item"><%= @level_label[person.level].html_safe %></div>
+              <div class="list_item"><%= @dafa_attitude_label[person.dafa_attitude].html_safe %></div>
+              <div class="list_item"><span class="label label-success"><%= person.source %></span></div>
+              <div class="list_item"><%= person.ps %></div>       
+            </td>
+            <td class="list_operation">
+              <div class="list_item">
+                <%= link_to(image_tag("/assets/1388778916_old-edit-find.png", :width => 25), edit_person_path(person)) %>
+                <%= link_to(image_tag("/assets/1388778956_Gnome-Edit-Delete-64.png", :width => 25), person_path(person), method: :delete, confirm: "確定要刪除嗎？") %>
+              </div>  
+              <div class="list_item"><%= person.created_at.to_s.gsub("UTC","") %> 建立</div>
+              <div class="list_item"><%= person.updated_at.to_s.gsub("UTC","") %> 更新</div>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+      </div>     
+    </div>
+  </div>
+</div>  

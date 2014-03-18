@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rocodev Event 報名系統</title>
+  <!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+  <script data-turbolinks-track="true" src="/assets/jquery_ujs.js?body=1"></script>
+    <!-- Bootstrap core CSS -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+        <script src="/assets/shtml5shiv.js"></script>
+        <script src="/assets/respond.min.js"></script>
+      <![endif]-->
+
+      <!-- Custom styles for this template -->
+  <link href="/assets/carousel.css" rel="stylesheet">
+
+  <%= csrf_meta_tags %>
+</head>
+<body class="devise">
+  <% if current_user %>
+      <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
+      <%= link_to('修改密碼', edit_registration_path(:user)) %>
+      <%= render :partial => "common/navigation" %>
+   <% else %>
+      <%= link_to('註冊', new_registration_path(:user)) %> |
+      <%= link_to('登入', new_session_path(:user)) %>
+   <% end %>
+   
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <div class="devise_login">
+    <div class="devise_login_form">
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>

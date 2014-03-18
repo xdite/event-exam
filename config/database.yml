@@ -1,0 +1,21 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: shenyun_crm_development
+  host: localhost
+  username: root
+  password: root
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: shenyun_crm_test
+  host: localhost
+  username: root
+  password: root
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: shenyun_crm_production
+  host: localhost
+  username: root
+  password: root
