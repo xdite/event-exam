@@ -1,0 +1,44 @@
+<div class="setting_panel"> 
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">自己的活動列表</h3>
+    </div>
+    <div class="panel-body">
+      <span class="label label-info">總活動數 <%= @events.count %>人</span>
+      <div class="panel panel-default">
+        <table class="table list_table">
+          <thead>
+            <th>標題</th>
+            <th>內容</th>
+            <th>報名人數上限</th>
+            <th>報名開始日語報名截止日</th>
+            <th>地點</th>
+            <th>價格</th>
+          </thead>
+          <% @events.each do |event| %>
+          <tr>
+            <td>
+              <%= event.title %>    
+            </td>
+            <td>
+              <%= event.content %>
+            </td>
+            <td>  
+              <%= event.person_limit %>
+            </td>
+            <td>
+              <%= event.active_date %>
+            </td>
+            <td>                 
+              <%= event.location %>      
+            </td>
+            <td>
+              <%= event.price %>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+      </div>     
+    </div>
+  </div>
+</div>  

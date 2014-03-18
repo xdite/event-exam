@@ -4,6 +4,8 @@ ShenyunCrm::Application.routes.draw do
   root :to => "people#index"
   devise_for :users
 
+  get "events/index"
+
   resources :people
   resources :events
 
