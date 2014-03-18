@@ -1,5 +1,8 @@
 class EventsController < ApplicationController
 
+  layout "crm"
+  before_action :login_required
+  
   def new
 
     @event = Event.new
@@ -21,7 +24,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :content, :person_limit, :active_date, :locatiopn, :price)
+    params.require(:event).permit(:title, :content, :person_limit, :active_date, :location, :price)
   end
 
 end
