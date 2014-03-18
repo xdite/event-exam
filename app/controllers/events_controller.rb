@@ -26,8 +26,9 @@ class EventsController < ApplicationController
    @event = Event.find(params[:id])
 
    if !current_user.is_member_of?(@event)
+    UserMailer.confirm(current_user.email, { :user_name => current_user.name, :event_title => @event.title}).deliver
      current_user.join!(@event)
-   else
+   else     
      flash[:warning] = "You already joined this event."
   end
   

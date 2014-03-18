@@ -27,14 +27,16 @@ ShenyunCrm::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.action_mailer.default_url_options = { :host => 'shenyun-crm.dev' }
+  config.action_mailer.default_url_options = { :host => 'eliving.co' }
 
-  config.paperclip_defaults = {
-  :storage => :s3,
-  :s3_credentials => {
-    :bucket => 'shenyun.crm',
-    :access_key_id => 'AKIAI4CPVLFVEPOSN2NA',
-    :secret_access_key => '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'
-    }
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => "587",
+    :domain => "gmail.com",
+    :authentication => "plain",
+    :user_name => "eliving.co.service@gmail.com",
+    :password => "33edc5tga1%^8(#",
+    :enable_starttls_auto => true
   }
+ 
 end
