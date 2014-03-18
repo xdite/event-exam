@@ -19,6 +19,32 @@ class EventsController < ApplicationController
 
   end
 
+  def join
+   @event = Event.find(params[:id])
+
+   if !current_user.is_member_of?(@event)
+     current_user.join!(@event)
+   else
+     flash[:warning] = "You already joined this event."
+  end
+  
+  redirect_to "/events/index"
+ 
+ end
+
+ def quit
+   @event = Event.find(params[:id])
+
+   if current_user.is_member_of?(@event)
+     current_user.quit!(@event)
+   else
+     flash[:warning] = "You are not member of this event."
+   end
+
+   redirect_to "/events/index"
+ end
+
+
 
 
   def create
