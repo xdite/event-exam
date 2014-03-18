@@ -54,6 +54,8 @@ gem "omniauth"
 gem "omniauth-facebook"
 gem "auto-facebook"
 
+gem 'settingslogic'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

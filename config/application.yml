@@ -1,5 +1,7 @@
 defaults: &defaults
-  host: "eliving.dev"
+  domain: "go.dev"
+  facebook_app_id:  "273664592802312"
+  facebook_secret: "8b006d26ef66f0951374909e62c33b00"
 
 development:
   <<: *defaults
