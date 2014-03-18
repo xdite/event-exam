@@ -18,6 +18,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @users = @event.members
+    @quit_users = @event.quit_members
 
   end
 
@@ -39,6 +40,7 @@ class EventsController < ApplicationController
 
    if current_user.is_member_of?(@event)
      current_user.quit!(@event)
+     @event.quit_member_from_event
    else
      flash[:warning] = "You are not member of this event."
    end

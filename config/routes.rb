@@ -1,19 +1,10 @@
 ShenyunCrm::Application.routes.draw do
 
-  get "documents/index"
-  root :to => "people#index"
   devise_for :users
-
+  root :to => "events#index"
+ 
   get "events/index"
-
-  resources :people
   resources :events
-
-  resources :documents
-
-  get "/people/view" => 'people#view'
-
-  get "/search" => 'people#index'
 
   get "me/events"
   get "me/join"
