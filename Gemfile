@@ -50,6 +50,10 @@ gem 'will_paginate-bootstrap'
 
 gem 'aws-sdk'
 
+gem "omniauth"
+gem "omniauth-facebook"
+gem "auto-facebook"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
