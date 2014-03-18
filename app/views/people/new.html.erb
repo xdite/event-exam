@@ -11,7 +11,7 @@
     });
 </script>
 <div class="setting_panel">
-  <%= form_for @person do |f| %>
+  <%= form_for @event do |f| %>
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">客戶基本資料</h3>
@@ -20,8 +20,8 @@
         <div class="input-group">          
           <%= f.label :avatar, "照片", :class => "input-group-addon" %>
           <div class="fileupload-preview thumbnail">
-            <%= image_tag @person.avatar.url, width: "200" if @person.avatar.url != "/avatars/original/missing.png" %>
-            <%= image_tag "/assets/1388596855_people-b.png" if @person.avatar.url == "/avatars/original/missing.png"%>
+            <%= image_tag @event.avatar.url, width: "200" if @event.avatar.url != "/avatars/original/missing.png" %>
+            <%= image_tag "/assets/1388596855_people-b.png" if @event.avatar.url == "/avatars/original/missing.png"%>
           </div>
           <%= f.file_field :avatar %>
         </div>
@@ -37,8 +37,8 @@
             <%= f.label :sex, "性別",:class => "input-group-addon" %>
             <div class="selectpicker_div">
               <select class="selectpicker" id="person_sex" name="person[sex]">
-                <option value="1" <%= 'selected' if @person.sex == 1 %>>男</option>
-                <option value="0" <%= 'selected' if @person.sex == 0 %>>女</option>
+                <option value="1" <%= 'selected' if @event.sex == 1 %>>男</option>
+                <option value="0" <%= 'selected' if @event.sex == 0 %>>女</option>
               </select>
             </div>
         </div>
@@ -145,10 +145,10 @@
           <%= f.label :level, "客戶等級",:class => "input-group-addon" %>
           <div class="selectpicker_div">
             <select class="selectpicker" id="person_level" name="person[level]">
-              <option value="0" data-content="<span class='label label-default'>尚未認識</span>" <%= 'selected' if @person.level == 0 %>>尚未認識</option>
-              <option value="1" data-content="<span class='label label-primary'>一般客戶</span>" <%= 'selected' if @person.level == 1 %>>一般客戶</option>
-              <option value="2" data-content="<span class='label label-danger'>重要客戶</span>" <%='selected' if @person.level == 2 %>>重要客戶</option>
-              <option value="3" data-content="<span class='label label-warning'>VIP</span>" <%= 'selected' if @person.level == 3 %>>VIP</option>
+              <option value="0" data-content="<span class='label label-default'>尚未認識</span>" <%= 'selected' if @event.level == 0 %>>尚未認識</option>
+              <option value="1" data-content="<span class='label label-primary'>一般客戶</span>" <%= 'selected' if @event.level == 1 %>>一般客戶</option>
+              <option value="2" data-content="<span class='label label-danger'>重要客戶</span>" <%='selected' if @event.level == 2 %>>重要客戶</option>
+              <option value="3" data-content="<span class='label label-warning'>VIP</span>" <%= 'selected' if @event.level == 3 %>>VIP</option>
             </select>
           </div>
         </div>
@@ -156,9 +156,9 @@
           <%= f.label :dafa_attitude, "大法態度",:class => "input-group-addon" %>
           <div class="selectpicker_div">
             <select class="selectpicker" id="person_dafa_attitude" name="person[dafa_attitude]">
-              <option value="0" data-content="<span class='label label-info'>大法態度未明</span>" <%= 'selected' if @person.dafa_attitude == 0 %>>大法態度未明</option>
-              <option value="1" data-content="<span class='label label-warning'>對大法有好感</span>" <%= 'selected' if @person.dafa_attitude == 1 %>>對大法有好感</option>
-              <option value="2" data-content="<span class='label label-danger'>大法負面思想</span>" <%= 'selected' if @person.dafa_attitude == 2 %>>大法負面思想</option>
+              <option value="0" data-content="<span class='label label-info'>大法態度未明</span>" <%= 'selected' if @event.dafa_attitude == 0 %>>大法態度未明</option>
+              <option value="1" data-content="<span class='label label-warning'>對大法有好感</span>" <%= 'selected' if @event.dafa_attitude == 1 %>>對大法有好感</option>
+              <option value="2" data-content="<span class='label label-danger'>大法負面思想</span>" <%= 'selected' if @event.dafa_attitude == 2 %>>大法負面思想</option>
             </select>
           </div>
         </div>

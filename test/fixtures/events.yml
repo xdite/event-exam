@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  content: MyString
+  person_limit: MyString
+  active_date: MyString
+  price: MyString
+  user_id: MyString
+
+two:
+  title: MyString
+  content: MyString
+  person_limit: MyString
+  active_date: MyString
+  price: MyString
+  user_id: MyString

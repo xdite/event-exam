@@ -1,7 +1,7 @@
 class PeopleController < ApplicationController
   layout "crm"
   before_action :login_required
-  before_action :require_is_admin
+  #before_action :require_is_admin
   
   def index
 

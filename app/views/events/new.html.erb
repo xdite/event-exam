@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.4.1/bootstrap-select.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.4.1/bootstrap-select.min.js"></script>
+<script type="text/javascript">
+    $(window).on('load', function () {
+
+        $('.selectpicker').selectpicker({
+            'selectedText': 'cat'
+        });
+
+        // $('.selectpicker').selectpicker('hide');
+    });
+</script>
+<div class="setting_panel">
+  <%= form_for @event do |f| %>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">開辦活動</h3>
+    </div>
+    <div class="panel-body">
+        <div class="input-group">
+          <%= f.label :title, "標題",:class => "input-group-addon" %>
+          <%= f.text_field :title, :class => "form-control", :placeholder => "標題" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :content, "內容",:class => "input-group-addon" %>
+          <%= f.text_field :content, :class => "form-control", :placeholder => "行動內容電話" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :person_limit, "報名人數上限",:class => "input-group-addon" %>
+          <%= f.text_field :person_limit, :class => "form-control", :placeholder => "報名人數上限" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :active_date, "報名開始日與報名截止日",:class => "input-group-addon" %>
+          <%= f.text_field :active_date, :class => "form-control", :placeholder => "報名開始日與報名截止日" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :location, "地點",:class => "input-group-addon" %>
+          <%= f.text_field :location, :class => "form-control", :placeholder => "地點" %>
+        </div>
+          <div class="input-group">
+          <%= f.label :price, "價格",:class => "input-group-addon" %>
+          <%= f.text_field :price, :class => "form-control", :placeholder => "價格" %>
+        </div>
+
+        <div class="input-group input-group-center">
+          <%= f.submit("新增", :class => "btn btn-default" ) %>
+        </div>
+    </div>
+  </div>
+  
+<% end %>
+</div>

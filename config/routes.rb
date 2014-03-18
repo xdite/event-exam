@@ -5,6 +5,7 @@ ShenyunCrm::Application.routes.draw do
   devise_for :users
 
   resources :people
+  resources :events
 
   resources :documents
 
