@@ -6,4 +6,11 @@ class MeController < ApplicationController
   	@events = current_user.events
 
   end
+
+  def join
+	@events = current_user.participated_events
+
+
+  	
+  end
 end

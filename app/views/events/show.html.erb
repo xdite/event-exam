@@ -1,0 +1,28 @@
+<div class="setting_panel"> 
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">此活動報名會員</h3>
+    </div>
+    <div class="panel-body">
+      <span class="label label-info">會員數 <%= @users.count %>人</span>
+      <div class="panel panel-default">
+        <table class="table list_table">
+          <thead>
+            <th>姓名</th>
+            <th>email</th>
+          </thead>
+          <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= user.name %>    
+            </td>
+            <td>
+              <%= user.email %>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+      </div>     
+    </div>
+  </div>
+</div>  

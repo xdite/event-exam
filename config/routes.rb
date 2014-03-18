@@ -16,6 +16,7 @@ ShenyunCrm::Application.routes.draw do
   get "/search" => 'people#index'
 
   get "me/events"
+  get "me/join"
 
 
   resources :events do

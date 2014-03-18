@@ -14,9 +14,6 @@
             <th>報名開始日語報名截止日</th>
             <th>地點</th>
             <th>價格</th>
-            <th>加入</th>
-            <th>退出</th>
-            <th>參加會員</th>
           </thead>
           <% @events.each do |event| %>
           <tr>
@@ -37,19 +34,6 @@
             </td>
             <td>
               <%= event.price %>
-            </td>
-            <td>
-              <% if !current_user.is_member_of?(event) %>
-                <%= link_to("加入", join_event_path(event), :method => :post, :class => "btn btn-mini") %>
-              <% end %> 
-            </td>
-            <td>
-              <% if current_user.is_member_of?(event) %>
-                <%= link_to("退出", quit_event_path(event), :method => :post, :class => "btn btn-mini") %>
-              <% end %> 
-            </td>
-            <td>
-              <%= link_to("查看", event_path(event), :class => "btn btn-mini") %>
             </td>
           </tr>
           <% end %>
