@@ -23,17 +23,35 @@ class EventsController < ApplicationController
   end
 
   def join
-   @event = Event.find(params[:id])
 
-   if !current_user.is_member_of?(@event)
-    UserMailer.confirm(current_user.email, { :user_name => current_user.name, :event_title => @event.title}).deliver
-     current_user.join!(@event)
-   else     
-     flash[:warning] = "You already joined this event."
+  @event = Event.find(params[:id])
+  
+  if !current_user.is_member_of?(@event)
+    if is_full_member?(@event)  
+      flash[:warning] = "此活動報名人數已滿"
+    else
+      if is_out_of_date?(@event)
+        flash[:warning] = "已超過報名截止時間"
+      else
+        UserMailer.confirm(current_user.email, { :user_name => current_user.name, :event_title => @event.title}).deliver
+        current_user.join!(@event)
+      end
+    end
+  else     
+     flash[:warning] = "你已經加入此活動"
   end
   
   redirect_to "/events/index"
  
+ end
+
+ def is_full_member?(event)
+  return (event.members.count >= event.person_limit.to_i)
+ end
+
+ def is_out_of_date?(event)
+  out_date = event.active_date.split('~')[1]
+  return Date.parse(out_date) < Date.today
  end
 
  def quit
@@ -43,7 +61,7 @@ class EventsController < ApplicationController
      current_user.quit!(@event)
      @event.quit_member_from_event
    else
-     flash[:warning] = "You are not member of this event."
+     flash[:warning] = "你並不是此活動的會員"
    end
 
    redirect_to "/events/index"
